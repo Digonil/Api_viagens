@@ -26,8 +26,8 @@ public class DepoimentoController : ControllerBase
     public async Task<IActionResult> RecuperarDepoimentoAsync([FromQuery] int skip = 0, [FromQuery] int take = 20)
     {
         try
-        {
-            var depoimentos = await _context.depoimentos.ToListAsync();
+        {   
+            var depoimentos = await _context.depoimentos.Skip(skip).Take(take).ToListAsync();
             return Ok(_mapper.Map<LerDepoimentoDto>(depoimentos));
         } catch 
         {
@@ -40,7 +40,7 @@ public class DepoimentoController : ControllerBase
     {
         try
         {
-            var depoimentos = await _context.depoimentos.ToListAsync();
+            var depoimentos = await _context.depoimentos.Skip(skip).Take(take).ToListAsync();
             return Ok(_mapper.Map<LerDepoimentoDto>(depoimentos));
         } catch
         {
