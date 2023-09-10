@@ -12,6 +12,14 @@ builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddCors(opts => 
+{
+   opts.AddPolicy("AcessoApi", builder =>
+    builder.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 app.MapControllers();

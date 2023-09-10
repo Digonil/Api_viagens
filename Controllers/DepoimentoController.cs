@@ -2,6 +2,7 @@
 using GerenciamentoViagens.Data;
 using GerenciamentoViagens.Data.Dto;
 using GerenciamentoViagens.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace GerenciamentoViagens.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[EnableCors("AcessoApi")]
 public class DepoimentoController : ControllerBase
 {
     private ViagensContext _context;
@@ -28,6 +30,19 @@ public class DepoimentoController : ControllerBase
             var depoimentos = await _context.depoimentos.ToListAsync();
             return Ok(_mapper.Map<LerDepoimentoDto>(depoimentos));
         } catch 
+        {
+            return NotFound();
+        }
+    }
+
+    [HttpGet("/depoimentos-home")]
+    public async Task<IActionResult> RecuperarOs3PrimeirosDepoimentoAsync([FromQuery] int skip = 0, [FromQuery] int take = 3)
+    {
+        try
+        {
+            var depoimentos = await _context.depoimentos.ToListAsync();
+            return Ok(_mapper.Map<LerDepoimentoDto>(depoimentos));
+        } catch
         {
             return NotFound();
         }
