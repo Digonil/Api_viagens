@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace GerenciamentoViagens.Controllers;
 
 [ApiController]
-[Route("[controler]")]
+[Route("[controller]")]
 public class DepoimentoController : ControllerBase
 {
     private ViagensContext _context;

@@ -5,6 +5,7 @@ namespace GerenciamentoViagens.Models;
 public class Depoimento
 {
     [Key]
+    [Required]
     public int Id { get; set; }
     public string Foto { get; set; }
     public string Comentario { get; set; }

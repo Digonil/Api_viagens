@@ -10,5 +10,8 @@ public class ViagensContext : DbContext
     {
         
     }
-    public DbSet<Depoimento> depoimentos { get; set; } 
+    public DbSet<Depoimento> depoimentos { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer("Server=localhost,1433;Database=viagensapirest;User ID=sa;Password=#Root2023#;TrustServerCertificate=True");
 }
