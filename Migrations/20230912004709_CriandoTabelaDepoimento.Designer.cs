@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciamentoViagens.Migrations
 {
     [DbContext(typeof(ViagensContext))]
-    [Migration("20230910153829_CriandoTabelaDepoimento")]
+    [Migration("20230912004709_CriandoTabelaDepoimento")]
     partial class CriandoTabelaDepoimento
     {
         /// <inheritdoc />

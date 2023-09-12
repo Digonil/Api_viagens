@@ -28,27 +28,27 @@ public class DepoimentoController : ControllerBase
         try
         {   
             var depoimentos = await _context.depoimentos.Skip(skip).Take(take).ToListAsync();
-            return Ok(_mapper.Map<LerDepoimentoDto>(depoimentos));
+            return Ok(_mapper.Map<List<LerDepoimentoDto>>(depoimentos));
         } catch 
         {
             return NotFound();
         }
     }
 
-    [HttpGet("/depoimentos-home")]
+    [HttpGet("depoimentos-home")]
     public async Task<IActionResult> RecuperarOs3PrimeirosDepoimentoAsync([FromQuery] int skip = 0, [FromQuery] int take = 3)
     {
         try
         {
             var depoimentos = await _context.depoimentos.Skip(skip).Take(take).ToListAsync();
-            return Ok(_mapper.Map<LerDepoimentoDto>(depoimentos));
+            return Ok(_mapper.Map<List<LerDepoimentoDto>>(depoimentos));
         } catch
         {
             return NotFound();
         }
     }
 
-    [HttpGet("{int:id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> RecuperarDepoimentoPorId(int id)
     {
         var depoimento = await _context.depoimentos.FirstOrDefaultAsync(x => x.Id == id);
@@ -72,7 +72,7 @@ public class DepoimentoController : ControllerBase
         return CreatedAtAction(nameof(RecuperarDepoimentoPorId), new {id = depoimento.Id}, depoimento);
     }
 
-    [HttpDelete("{int:id}")]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeletarDepoimento(int id)
     {
         var depoimento = await _context.depoimentos.FirstOrDefaultAsync(x => x.Id == id);
