@@ -1,6 +1,6 @@
 ﻿namespace GerenciamentoViagens.Data.Dto;
 
-public class LerDestino
+public class LerDestinoDto
 {
     public int Id { get; set; }
     public string Foto { get; set; }
