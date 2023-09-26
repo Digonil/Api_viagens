@@ -21,11 +21,11 @@ public class DestinoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> ListarDestinosAsync([FromQuery] int skip = 0, int take = 0)
+    public async Task<IActionResult> ListarDestinosAsync([FromQuery] int page = 0,[FromQuery] int pageSize = 0)
     {
         try
         {
-            var destinos = await _context.destinos.Skip(skip).Take(take).ToListAsync();
+            var destinos = await _context.destinos.Skip(page).Take(pageSize).ToListAsync();
             return Ok(_mapper.Map<List<LerDestinoDto>>(destinos));
         } catch 
         {
@@ -35,11 +35,20 @@ public class DestinoController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> ListarDestinosPorIdAsync(int id)
+    public async Task<IActionResult> ListarDestinosPorIdAsync([FromRoute] int id)
     { 
         if(id == null) return NotFound();
         
         var destinos = await _context.destinos.FirstAsync(x => x.Id == id);
+        return Ok(_mapper.Map<LerDepoimentoDto>(destinos));
+    }
+
+    [HttpGet("{nome}")]
+    public async Task<IActionResult> ListarDestinosPorNomeAsync([FromRoute] string nome)
+    { 
+        if(nome == null) return NotFound();
+        
+        var destinos = await _context.destinos.FirstAsync(x => x.Nome == nome);
         return Ok(_mapper.Map<LerDepoimentoDto>(destinos));
     }
 
@@ -52,7 +61,7 @@ public class DestinoController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> ApagarDestinoAsync(int id)
+    public async Task<IActionResult> ApagarDestinoAsync([FromQuery] int id)
     {
         var destino = await _context.destinos.FirstAsync(x => x.Id == id);
         if(destino == null) return NotFound();

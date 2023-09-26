@@ -23,11 +23,11 @@ public class DepoimentoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> RecuperarDepoimentoAsync([FromQuery] int skip = 0, [FromQuery] int take = 20)
+    public async Task<IActionResult> RecuperarDepoimentoAsync([FromQuery] int page = 0, [FromQuery] int pageSize = 20)
     {
         try
         {   
-            var depoimentos = await _context.depoimentos.Skip(skip).Take(take).ToListAsync();
+            var depoimentos = await _context.depoimentos.Skip(page).Take(pageSize).ToListAsync();
             return Ok(_mapper.Map<List<LerDepoimentoDto>>(depoimentos));
         } catch 
         {
@@ -49,7 +49,7 @@ public class DepoimentoController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> RecuperarDepoimentoPorId(int id)
+    public async Task<IActionResult> RecuperarDepoimentoPorId([FromQuery] int id)
     {
         var depoimento = await _context.depoimentos.FirstOrDefaultAsync(x => x.Id == id);
         if (depoimento == null)
@@ -73,7 +73,7 @@ public class DepoimentoController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletarDepoimento(int id)
+    public async Task<IActionResult> DeletarDepoimento([FromQuery] int id)
     {
         var depoimento = await _context.depoimentos.FirstOrDefaultAsync(x => x.Id == id);
         if (depoimento == null)
