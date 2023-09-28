@@ -10,5 +10,6 @@ public class DestinoProfile : Profile
     {
         CreateMap<CriarDestinoDto, Destino>();
         CreateMap<Destino, LerDepoimentoDto>();
+        CreateMap<Destino, LerDestinoNomeDto>();
     }
 }

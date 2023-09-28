@@ -6,9 +6,9 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("ViagensConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<ViagensContext>();
+builder.Services.AddDbContext<ViagensContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 

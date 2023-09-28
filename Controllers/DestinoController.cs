@@ -26,7 +26,7 @@ public class DestinoController : ControllerBase
         try
         {
             var destinos = await _context.destinos.Skip(page).Take(pageSize).ToListAsync();
-            return Ok(_mapper.Map<List<LerDestinoDto>>(destinos));
+            return Ok(_mapper.Map<List<LerDestinoNomeDto>>(destinos));
         } catch 
         {
             return NotFound();
@@ -45,11 +45,15 @@ public class DestinoController : ControllerBase
 
     [HttpGet("{nome}")]
     public async Task<IActionResult> ListarDestinosPorNomeAsync([FromRoute] string nome)
-    { 
-        if(nome == null) return NotFound();
-        
-        var destinos = await _context.destinos.FirstAsync(x => x.Nome == nome);
-        return Ok(_mapper.Map<LerDepoimentoDto>(destinos));
+    {
+
+        if (nome == null)
+        {
+            return NotFound("Nenhum destino foi encontrado.");
+        }
+            
+            var destinos = await _context.destinos.FirstAsync(x => x.Nome == nome);
+            return Ok(_mapper.Map<LerDestinoNomeDto>(destinos));  
     }
 
     [HttpPost]
