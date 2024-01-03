@@ -1,8 +1,15 @@
-﻿namespace GerenciamentoViagens.Data.Dto;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GerenciamentoViagens.Data.Dto;
 
 public class CriarDestinoDto
 {
-    public string Foto { get; set; }
+    public string Foto1 { get; set; }
+    public string Foto2 { get; set; }
     public string Nome { get; set; }
-    public double Preco { get; set; }
+
+    [StringLength(160)]
+    public string Meta { get; set; }
+    public string TextoDescritivo { get; set; }
+
 }

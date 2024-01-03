@@ -48,7 +48,6 @@ public class DestinoController : ControllerBase
     [HttpGet("{nome}")]
     public async Task<IActionResult> ListarDestinosPorNomeAsync([FromRoute] string nome)
     {
-
         if (nome == null)
         {
             return NotFound("Nenhum destino foi encontrado.");

@@ -77,3 +77,4 @@ C:\devCsharp\GerenciamentoViagens\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagge
 C:\devCsharp\GerenciamentoViagens\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\devCsharp\GerenciamentoViagens\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\devCsharp\GerenciamentoViagens\obj\Debug\net7.0\GerenciamentoViagens.MvcApplicationPartsAssemblyInfo.cs
+C:\devCsharp\GerenciamentoViagens\obj\Debug\net7.0\GerenciamentoViagens.sourcelink.json
