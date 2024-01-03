@@ -9,7 +9,7 @@ public class DestinoProfile : Profile
     public DestinoProfile()
     {
         CreateMap<CriarDestinoDto, Destino>();
-        CreateMap<Destino, LerDepoimentoDto>();
+        CreateMap<Destino, LerDestinoDto>();
         CreateMap<Destino, LerDestinoNomeDto>();
     }
 }

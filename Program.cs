@@ -29,6 +29,7 @@ app.UseCors(MyAllowSpecificOrigins);
 
 app.MapControllers();
 
+/*
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -37,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+*/
 app.Run();
 
 

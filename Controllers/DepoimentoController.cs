@@ -27,7 +27,7 @@ public class DepoimentoController : ControllerBase
     {
         try
         {   
-            var depoimentos = await _context.depoimentos.Skip(page).Take(pageSize).ToListAsync();
+            var depoimentos = await _context.Depoimentos.Skip(page).Take(pageSize).ToListAsync();
             return Ok(_mapper.Map<List<LerDepoimentoDto>>(depoimentos));
         } catch 
         {
@@ -40,7 +40,7 @@ public class DepoimentoController : ControllerBase
     {
         try
         {
-            var depoimentos = await _context.depoimentos.Skip(skip).Take(take).ToListAsync();
+            var depoimentos = await _context.Depoimentos.Skip(skip).Take(take).ToListAsync();
             return Ok(_mapper.Map<List<LerDepoimentoDto>>(depoimentos));
         } catch
         {
@@ -51,7 +51,7 @@ public class DepoimentoController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> RecuperarDepoimentoPorId([FromQuery] int id)
     {
-        var depoimento = await _context.depoimentos.FirstOrDefaultAsync(x => x.Id == id);
+        var depoimento = await _context.Depoimentos.FirstOrDefaultAsync(x => x.Id == id);
         if (depoimento == null)
         {
             return NotFound();
@@ -66,7 +66,7 @@ public class DepoimentoController : ControllerBase
     {
         var depoimento = _mapper.Map<Depoimento>(depoimentoDto);
 
-        await _context.depoimentos.AddAsync(depoimento);
+        await _context.Depoimentos.AddAsync(depoimento);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(RecuperarDepoimentoPorId), new {id = depoimento.Id}, depoimento);
@@ -75,12 +75,12 @@ public class DepoimentoController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletarDepoimento([FromQuery] int id)
     {
-        var depoimento = await _context.depoimentos.FirstOrDefaultAsync(x => x.Id == id);
+        var depoimento = await _context.Depoimentos.FirstOrDefaultAsync(x => x.Id == id);
         if (depoimento == null)
         {
             return NotFound();
         }
-        _context.depoimentos.Remove(depoimento);
+        _context.Depoimentos.Remove(depoimento);
 
         return NoContent();
     }

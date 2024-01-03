@@ -2,6 +2,7 @@
 using GerenciamentoViagens.Data;
 using GerenciamentoViagens.Data.Dto;
 using GerenciamentoViagens.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace GerenciamentoViagens.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[EnableCors("AcessoApi")]
 public class DestinoController : ControllerBase
 {
     private ViagensContext _context;
@@ -25,7 +27,7 @@ public class DestinoController : ControllerBase
     {
         try
         {
-            var destinos = await _context.destinos.Skip(page).Take(pageSize).ToListAsync();
+            var destinos = await _context.Destinos.Skip(page).Take(pageSize).ToListAsync();
             return Ok(_mapper.Map<List<LerDestinoNomeDto>>(destinos));
         } catch 
         {
@@ -39,8 +41,8 @@ public class DestinoController : ControllerBase
     { 
         if(id == null) return NotFound();
         
-        var destinos = await _context.destinos.FirstAsync(x => x.Id == id);
-        return Ok(_mapper.Map<LerDepoimentoDto>(destinos));
+        var destinos = await _context.Destinos.FirstAsync(x => x.Id == id);
+        return Ok(_mapper.Map<LerDestinoDto>(destinos));
     }
 
     [HttpGet("{nome}")]
@@ -52,25 +54,25 @@ public class DestinoController : ControllerBase
             return NotFound("Nenhum destino foi encontrado.");
         }
             
-            var destinos = await _context.destinos.FirstAsync(x => x.Nome == nome);
+            var destinos = await _context.Destinos.FirstAsync(x => x.Nome == nome);
             return Ok(_mapper.Map<LerDestinoNomeDto>(destinos));  
     }
 
     [HttpPost]
-    public async Task<IActionResult> CriarDestinoAsync([FromBody] CriarDepoimentoDto destinoDto)
+    public async Task<IActionResult> CriarDestinoAsync([FromBody] CriarDestinoDto destinoDto)
     {
         var destino = _mapper.Map<Destino>(destinoDto);
-        await _context.destinos.AddAsync(destino);
+        await _context.Destinos.AddAsync(destino);
         return CreatedAtAction(nameof(ListarDestinosPorIdAsync), new { id = destino.Id }, destino);
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> ApagarDestinoAsync([FromQuery] int id)
     {
-        var destino = await _context.destinos.FirstAsync(x => x.Id == id);
+        var destino = await _context.Destinos.FirstAsync(x => x.Id == id);
         if(destino == null) return NotFound();
 
-        _context.destinos.Remove(destino);
+        _context.Destinos.Remove(destino);
         return NoContent();
     }
 

@@ -10,8 +10,8 @@ public class ViagensContext : DbContext
     {
         
     }
-    public DbSet<Depoimento> depoimentos { get; set; }
-    public DbSet<Destino> destinos { get; set; }
+    public DbSet<Depoimento> Depoimentos { get; set; }
+    public DbSet<Destino> Destinos { get; set; }
 
     
 }

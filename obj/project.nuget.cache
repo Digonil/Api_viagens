@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "S+Y8LZr7S+NIaqB8FUqql7KKHUGMFGYKWxbfj1wCYiZi8VGI1OABTgqOiQoLi4wj4Vi1+DsukQoG+5E9+Hg0hw==",
+  "dgSpecHash": "oHRDWBZB9Eo/47O0fH22D4UryfVTcOpv0RV+N3N48k1csoX1s1c/FNlJ0/n8rFxPVeLDTs+0bTxSFhv9wy0vvQ==",
   "success": true,
   "projectFilePath": "C:\\devCsharp\\GerenciamentoViagens\\GerenciamentoViagens.csproj",
   "expectedPackageFiles": [
@@ -81,7 +81,11 @@
     "C:\\Users\\diego\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\diego\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
+    "C:\\Users\\diego\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }
